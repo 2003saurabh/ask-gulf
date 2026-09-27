@@ -4,5 +4,15 @@
   { "slot_id": "SLOT-003", "date": "2026-01-21", "time": "09:30", "rm_name": "Layla Hassan", "booked": false },
   { "slot_id": "SLOT-004", "date": "2026-01-21", "time": "14:00", "rm_name": "Yusuf Rahman", "booked": true },
   { "slot_id": "SLOT-005", "date": "2026-01-22", "time": "10:30", "rm_name": "Omar Farouk", "booked": false },
-  { "slot_id": "SLOT-006", "date": "2026-01-22", "time": "15:30", "rm_name": "Yusuf Rahman", "booked": false }
+  { "slot_id": "SLOT-006", "date": "2026-01-22", "time": "15:30", "rm_name": "Yusuf Rahman", "booked": false },
+  { "slot_id": "SLOT-007", "date": "2026-01-23", "time": "09:00", "rm_name": "Layla Hassan", "booked": false },
+  { "slot_id": "SLOT-008", "date": "2026-01-23", "time": "13:00", "rm_name": "Omar Farouk", "booked": false },
+  { "slot_id": "SLOT-009", "date": "2026-01-26", "time": "10:00", "rm_name": "Yusuf Rahman", "booked": false },
+  { "slot_id": "SLOT-010", "date": "2026-01-26", "time": "11:30", "rm_name": "Layla Hassan", "booked": true },
+  { "slot_id": "SLOT-011", "date": "2026-01-27", "time": "09:30", "rm_name": "Omar Farouk", "booked": false },
+  { "slot_id": "SLOT-012", "date": "2026-01-27", "time": "14:30", "rm_name": "Yusuf Rahman", "booked": false },
+  { "slot_id": "SLOT-013", "date": "2026-01-28", "time": "10:00", "rm_name": "Layla Hassan", "booked": false },
+  { "slot_id": "SLOT-014", "date": "2026-01-28", "time": "16:00", "rm_name": "Omar Farouk", "booked": false },
+  { "slot_id": "SLOT-015", "date": "2026-01-29", "time": "09:00", "rm_name": "Yusuf Rahman", "booked": false },
+  { "slot_id": "SLOT-016", "date": "2026-01-29", "time": "13:30", "rm_name": "Layla Hassan", "booked": false }
 ]

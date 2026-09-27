@@ -1,20 +1,14 @@
 [
-  {
-    "name": "John Doe",
-    "identifiers": ["P1234567", "AB998877"],
-    "list": "OFAC SDN",
-    "reason": "Listed for sanctions evasion (mock)."
-  },
-  {
-    "name": "Ivan Petrov",
-    "identifiers": ["RU7654321"],
-    "list": "EU Sanctions",
-    "reason": "Politically exposed person under review (mock)."
-  },
-  {
-    "name": "Maria Garcia",
-    "identifiers": ["ES4455667", "X9988776"],
-    "list": "UN Consolidated",
-    "reason": "Associated with a listed entity (mock)."
-  }
+  { "name": "John Doe", "identifiers": ["P1234567", "AB998877"], "list": "OFAC SDN", "reason": "Listed for sanctions evasion (mock)." },
+  { "name": "Ivan Petrov", "identifiers": ["RU7654321"], "list": "EU Sanctions", "reason": "Politically exposed person under review (mock)." },
+  { "name": "Maria Garcia", "identifiers": ["ES4455667", "X9988776"], "list": "UN Consolidated", "reason": "Associated with a listed entity (mock)." },
+  { "name": "Chen Wei", "identifiers": ["CN5566778", "HK1029384"], "list": "OFAC SDN", "reason": "Front company director flagged for asset concealment (mock)." },
+  { "name": "Fatima Al-Sayed", "identifiers": ["AE7788990"], "list": "UN Consolidated", "reason": "Subject of a UN travel ban (mock)." },
+  { "name": "Dmitri Volkov", "identifiers": ["RU3344556", "P8877665"], "list": "EU Sanctions", "reason": "Designated under sectoral sanctions measures (mock)." },
+  { "name": "Ahmed Khan", "identifiers": ["PK2233445"], "list": "OFAC SDN", "reason": "Linked to a designated financing network (mock)." },
+  { "name": "Sofia Rossi", "identifiers": ["IT6677889", "EU4433221"], "list": "EU Sanctions", "reason": "Beneficial owner of a sanctioned entity (mock)." },
+  { "name": "Kwame Mensah", "identifiers": ["GH9900112"], "list": "UN Consolidated", "reason": "Named in a UN panel of experts report (mock)." },
+  { "name": "Olga Ivanova", "identifiers": ["RU1122334", "P5544332", "BY7766554"], "list": "OFAC SDN", "reason": "Facilitator for a designated procurement network (mock)." },
+  { "name": "Hassan Nasser", "identifiers": ["LB8899001"], "list": "UN Consolidated", "reason": "Subject of an asset freeze (mock)." },
+  { "name": "Viktor Novak", "identifiers": ["CZ4455990", "P3322110"], "list": "EU Sanctions", "reason": "Sanctioned for circumventing export controls (mock)." }
 ]

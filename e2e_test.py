@@ -139,7 +139,7 @@ check("CRM did NOT fire (not a recommendation)", "crm_agent" not in ag, str(ag))
 # --------------------------------------------------------------------------- #
 section("License Advisor — custom quote (25 visas)")
 sid = f"e2e-custom-{uuid.uuid4()}"
-r = invoke("I need 25 visas for a large trading operation", sid)
+r = invoke("I run a large trading operation, I need 25 visas, and I want to launch next quarter. Which package fits?", sid)
 ag = agents_in(r)
 msg = r.get("message", "").lower()
 check("routed to license_advisor", "license_advisor" in ag, str(ag))
@@ -194,6 +194,21 @@ sid = f"e2e-comp-clear-{uuid.uuid4()}"
 r = invoke("Screen Jane Smith, ID Z1112223", sid)
 check("clear case -> compliance_screener", "compliance_screener" in agents_in(r), str(agents_in(r)))
 check("Jane Smith CLEAR", "clear" in r.get("message", "").lower(), r.get("message", "")[:160])
+
+# Richer watchlist: a new entry flags via NAME match (Chen Wei + a
+# non-matching id, so the hit comes from the name in the enriched list).
+sid = f"e2e-comp-name-{uuid.uuid4()}"
+r = invoke("Run a compliance screening on Chen Wei, passport Q1231231", sid)
+check("new-entry name match FLAGGED (Chen Wei)",
+      "flagged" in r.get("message", "").lower(), r.get("message", "")[:200])
+
+# Richer watchlist: a new entry flags via IDENTIFIER match (Dmitri Volkov
+# passport P8877665 present in the enriched list), name given so the
+# screener proceeds to the match step.
+sid = f"e2e-comp-id-{uuid.uuid4()}"
+r = invoke("Screen Dmitri Volkov, passport P8877665", sid)
+check("new-entry identifier match FLAGGED (P8877665)",
+      "flagged" in r.get("message", "").lower(), r.get("message", "")[:200])
 
 
 # --------------------------------------------------------------------------- #
