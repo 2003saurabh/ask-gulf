@@ -1,0 +1,388 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1. Scaffold project structure, config, and dependency manifests": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322046646
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322059353
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322183844
+      }
+    ],
+    "2.1 Implement the `AgentResponse` contract and shared Bedrock helper (`backend/bedrock_client.py`)": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322046967
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322198926
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322335879
+      }
+    ],
+    "2.3 Implement per-agent fallback responses (`backend/fallbacks.py`)": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322047219
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322200328
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322337283
+      }
+    ],
+    "2.4 Implement the session-store abstraction (`backend/session_store.py`)": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322047508
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322201090
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322338248
+      }
+    ],
+    "7. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322047752
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790324080009
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790324262231
+      }
+    ],
+    "11. Checkpoint - Ensure all agents and their tests pass": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322047935
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790324263152
+      }
+    ],
+    "12.1 Implement the chaining engine (`run_chain`)": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322048125
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323215673
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323570410
+      }
+    ],
+    "12.2 Implement the CRM auto-fire post-processing hook": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322048317
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323217027
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323571347
+      }
+    ],
+    "15. Checkpoint - Ensure backend runtime and tests pass": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322048506
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790324264211
+      }
+    ],
+    "16.1 Set up the frontend project and GulfKloud theme": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322048785
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322545618
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322737355
+      }
+    ],
+    "16.2 Implement the split-panel page and message components": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322048997
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323218459
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323572802
+      }
+    ],
+    "16.3 Implement the live TracePanel and TraceCard": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322049218
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323219446
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323573706
+      }
+    ],
+    "19.1 Implement the shared agent-handler contract test and registry-extensibility test": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322049403
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323818337
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790324057359
+      }
+    ],
+    "20. Final checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322049598
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790324270845
+      }
+    ],
+    "2. Implement shared runtime primitives": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322338467
+      }
+    ],
+    "3. Implement the import-safe Agent Registry (`backend/agents/__init__.py`)": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322364741
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322534743
+      }
+    ],
+    "13. Implement mock data files and loader (`backend/mock_data/`)": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322366858
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322535456
+      }
+    ],
+    "4. Implement the Orchestrator router with fallback routing (`backend/orchestrator.py`)": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322544597
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322738315
+      }
+    ],
+    "5. Implement License Advisor agent (template + default) (`backend/agents/license_advisor.py`)": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322745925
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323202589
+      }
+    ],
+    "6. Implement Application Intake agent (`backend/agents/application_intake.py`)": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322747335
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323203755
+      }
+    ],
+    "8. Implement Compliance Screener agent (`backend/agents/compliance_screener.py`)": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322748813
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323205204
+      }
+    ],
+    "9. Implement CRM agent (`backend/agents/crm_agent.py`)": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322751156
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323206092
+      }
+    ],
+    "10. Implement Appointment Scheduler agent (`backend/agents/appointment_scheduler.py`)": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790322752283
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323207461
+      }
+    ],
+    "17. Implement Terraform infrastructure (`infra/`)": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323220479
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323574829
+      }
+    ],
+    "12. Implement the chaining engine and CRM auto-fire hook (`backend/main.py` runtime module)": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323571472
+      }
+    ],
+    "16. Implement the Next.js split-panel frontend (`frontend/`)": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323573844
+      }
+    ],
+    "14. Implement the WebSocket/HTTP surface (`backend/main.py`)": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323582605
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323810062
+      }
+    ],
+    "18. Implement AgentCore packaging and deployment-mode switch": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790323817235
+      },
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790324058053
+      }
+    ],
+    "19. Implement cross-cutting test and guardrail suites": [
+      {
+        "executionId": "9300114e-bfe0-4c28-831d-7a4c019a0248",
+        "chatSessionId": "sess_e6819330-681b-45ca-96d3-f48a6efca963",
+        "timestamp": 1790324057531
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "name": "John Doe",
+    "identifiers": ["P1234567", "AB998877"],
+    "list": "OFAC SDN",
+    "reason": "Listed for sanctions evasion (mock)."
+  },
+  {
+    "name": "Ivan Petrov",
+    "identifiers": ["RU7654321"],
+    "list": "EU Sanctions",
+    "reason": "Politically exposed person under review (mock)."
+  },
+  {
+    "name": "Maria Garcia",
+    "identifiers": ["ES4455667", "X9988776"],
+    "list": "UN Consolidated",
+    "reason": "Associated with a listed entity (mock)."
+  }
+]

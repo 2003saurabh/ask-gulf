@@ -1,0 +1,253 @@
+{
+  "pbtResults": {
+    "1. Write bug-condition exploration tests (BEFORE any fix)": {
+      "status": "passed",
+      "failingExample": "Exploration tests correctly FAILED on unfixed code, confirming all six defects (this is the success case for bug-condition exploration).\n\nC1 (missing timings) — process_message returned {type, message, trace} with NO routing_ms / total_ms fields. Counterexample payload: {'type':'response','message':'Hello!...','trace':[{license_advisor...},{crm_agent...}]} — result.get('routing_ms') is None.\n\nC2 (foreground CRM + reply pollution) — on a recommendation the reply text was 'I recommend the Startup package at AED 22,000/year...\\n\\nLead LEAD-1790524161 captured. A relationship manager will follow up shortly.' The 'Lead LEAD-... captured' line was appended to the reply, and every frame (incl. the CRM trace) was flushed only after process_message returned, so no response frame preceded the CRM trace frame.\n\nC6 (CRM on a non-recommendation) — a greeting ('hello') routed to license_advisor still wrote a lead to DynamoDB: [{'pk':'LEAD-1790524161','entity_type':'lead','lead_id':'LEAD-1790524161','source':'aws-summit-demo','status':'NEW','interaction_summary':'hello',...}], emitted a crm_agent Trace_Entry, and appended the CRM confirmation to the reply.\n\nC3 (client churn) — bedrock_client._default_bedrock_client was invoked 3 times across 3 invoke_agent calls (expected 1). Counterexample: calls['n'] == 3.\n\nC4 agent budget (R1.7) — with a Bedrock stub sleeping 6s against a 1s budget, invoke_agent returned after elapsed 6.00s (expected <= budget+1s = 2s); timeout_s not enforced.\nC4 routing budget (R1.8) — with a Sonnet stub sleeping 6s against a scaled 1s routing budget, orchestrator.route returned after elapsed 6.00s (expected <= 2s); the ThreadPoolExecutor context-manager blocks on shutdown(wait=True) after future.result times out.\n\nC5 (buffered trace / blocked loop, R1.9/R1.10) — during a ~2s turn a concurrent asyncio ticker advanced only 1 time (expected >= 10), proving the synchronous process_message monopolizes the event loop; all frames are buffered and flushed only after the turn ends.\n\nNote: the C5 test initially PASSED unexpectedly due to a flawed test (it called the sync ping() directly and never exercised loop concurrency). The test was corrected to run a concurrent asyncio ticker on the same loop and measure the first-send offset; it now fails on the unfixed code, correctly detecting the C5 defect. All AWS boundaries mocked; no real AWS. Command: .\\.venv\\Scripts\\python.exe -m pytest tests/test_latency_trace_bug_conditions.py — result: 7 failed (C1,C2,C6,C3,C4a,C4b,C5), existing suite still 8 passed.",
+      "lastRunTimestamp": 1790524207408
+    }
+  },
+  "executionHistory": {
+    "1. Write bug-condition exploration tests (BEFORE any fix)": [
+      {
+        "executionId": "f3fed566-3658-4d3e-88e6-e57960159099",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790421189107
+      },
+      {
+        "executionId": "f3fed566-3658-4d3e-88e6-e57960159099",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790421202177
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790524256176
+      }
+    ],
+    "2. Write preservation property tests (BEFORE implementing the fix)": [
+      {
+        "executionId": "f3fed566-3658-4d3e-88e6-e57960159099",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790421189239
+      },
+      {
+        "executionId": "f3fed566-3658-4d3e-88e6-e57960159099",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790421203036
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790524257999
+      }
+    ],
+    "3.1 Reuse process-wide, thread-safe AWS clients (C3) — `backend/bedrock_client.py`, `backend/main.py`, `backend/agents/*`": [
+      {
+        "executionId": "f3fed566-3658-4d3e-88e6-e57960159099",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790421189343
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790524269457
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790527957048
+      }
+    ],
+    "3.2 Enforce per-call budgets (C4) — `backend/bedrock_client.py`, `backend/orchestrator.py`": [
+      {
+        "executionId": "f3fed566-3658-4d3e-88e6-e57960159099",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790421189447
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790527966583
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790528968850
+      }
+    ],
+    "3.3 Expose routing time and measure total turn time (C1) — `backend/orchestrator.py`, `backend/main.py`": [
+      {
+        "executionId": "f3fed566-3658-4d3e-88e6-e57960159099",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790421189514
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790529210032
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790529404479
+      }
+    ],
+    "3.4 Add a recommendation signal to the License_Advisor (C6) — `backend/agents/license_advisor.py`": [
+      {
+        "executionId": "f3fed566-3658-4d3e-88e6-e57960159099",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790421189580
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790524270466
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790527959202
+      }
+    ],
+    "3.5 Gate CRM auto-fire on a recommendation and keep its text out of the reply (C2, C6) — `backend/runtime.py`": [
+      {
+        "executionId": "f3fed566-3658-4d3e-88e6-e57960159099",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790421189646
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790527967560
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790528756574
+      }
+    ],
+    "3.6 Split process_message for foreground/background CRM (C2) — `backend/main.py`": [
+      {
+        "executionId": "f3fed566-3658-4d3e-88e6-e57960159099",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790421189711
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790528984822
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790529197034
+      }
+    ],
+    "3.7 Non-blocking background CRM, live streamed trace, and off-loop execution (C2, C5) — `backend/main.py`": [
+      {
+        "executionId": "f3fed566-3658-4d3e-88e6-e57960159099",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790421189779
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790529412205
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790530018898
+      }
+    ],
+    "3.8 Render timings and reconcile the late CRM trace on the frontend — `frontend/src/components/ChatPanel.tsx`, `TracePanel.tsx`, `TraceCard.tsx`, `frontend/src/types.ts`": [
+      {
+        "executionId": "f3fed566-3658-4d3e-88e6-e57960159099",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790421189848
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790530026224
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790530477466
+      }
+    ],
+    "4. Verify the bug-condition exploration tests now pass": [
+      {
+        "executionId": "f3fed566-3658-4d3e-88e6-e57960159099",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790421189911
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790530492879
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790530551592
+      }
+    ],
+    "5. Verify the preservation tests still pass": [
+      {
+        "executionId": "f3fed566-3658-4d3e-88e6-e57960159099",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790421189982
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790530560738
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790530635390
+      }
+    ],
+    "6. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "f3fed566-3658-4d3e-88e6-e57960159099",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790421190044
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790530640983
+      },
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790530741470
+      }
+    ],
+    "7.* Write additional preservation property-based tests (optional, deeper coverage)": [
+      {
+        "executionId": "f3fed566-3658-4d3e-88e6-e57960159099",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790421190112
+      }
+    ],
+    "8.* Write integration tests for the full WebSocket turn (optional)": [
+      {
+        "executionId": "f3fed566-3658-4d3e-88e6-e57960159099",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790421190177
+      }
+    ],
+    "3. Fix the latency & trace defects (C1–C6)": [
+      {
+        "executionId": "5d0e2123-8d8f-405a-b4cf-ee51de055385",
+        "chatSessionId": "sess_d9a8c88e-0bed-4987-98a9-45b1fc77ed0e",
+        "timestamp": 1790530477582
+      }
+    ]
+  }
+}

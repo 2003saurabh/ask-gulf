@@ -1,0 +1,55 @@
+# Secrets and credentials (R16.4) - never commit
+.env
+.env.*
+*.env
+.envrc
+credentials
+credentials.json
+aws-credentials*
+*.pem
+*.key
+*.p12
+*.pfx
+secrets.json
+*.secret
+.aws/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+.venv/
+venv/
+env/
+.pytest_cache/
+.hypothesis/
+.mypy_cache/
+build/
+dist/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp.*
+
+# Terraform state (may contain sensitive data)
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+crash.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# TypeScript build cache
+*.tsbuildinfo

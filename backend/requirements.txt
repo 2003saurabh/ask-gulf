@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+python-multipart
+boto3
+websockets
+hypothesis
+moto
+pytest
+
+# AgentCore Memory + Runtime wiring uses the boto3 "bedrock-agentcore" (data
+# plane) / "bedrock-agentcore-control" (control plane) service clients. These
+# ship with recent boto3/botocore; the exact Memory event op shapes vary by
+# version, so pin a boto3 recent enough to expose them in the runtime image.

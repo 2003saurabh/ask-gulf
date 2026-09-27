@@ -1,0 +1,8 @@
+[
+  { "slot_id": "SLOT-001", "date": "2026-01-20", "time": "10:00", "rm_name": "Layla Hassan", "booked": false },
+  { "slot_id": "SLOT-002", "date": "2026-01-20", "time": "11:30", "rm_name": "Omar Farouk", "booked": true },
+  { "slot_id": "SLOT-003", "date": "2026-01-21", "time": "09:30", "rm_name": "Layla Hassan", "booked": false },
+  { "slot_id": "SLOT-004", "date": "2026-01-21", "time": "14:00", "rm_name": "Yusuf Rahman", "booked": true },
+  { "slot_id": "SLOT-005", "date": "2026-01-22", "time": "10:30", "rm_name": "Omar Farouk", "booked": false },
+  { "slot_id": "SLOT-006", "date": "2026-01-22", "time": "15:30", "rm_name": "Yusuf Rahman", "booked": false }
+]

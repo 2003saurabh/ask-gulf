@@ -1,0 +1,11 @@
+{
+  "packages": {
+    "Idea":    { "base_aed": 6600,  "visa_included": 0 },
+    "Seed":    { "base_aed": 12500, "visa_included": 2 },
+    "Startup": { "base_aed": 22000, "visa_included": 3 },
+    "Growth":  { "base_aed": 45000, "visa_included": 10 }
+  },
+  "per_extra_visa_aed": 3500,
+  "office_flex_aed": 5000,
+  "office_premium_aed": 15000
+}

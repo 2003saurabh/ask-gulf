@@ -1,0 +1,73 @@
+﻿# Ask Gulf — full-stack local run (backend FastAPI + frontend Next.js).
+#
+#   docker compose up --build
+#     frontend -> http://localhost:3000
+#     backend  -> http://localhost:8080  (/health, /ws/{session_id}, /invocations)
+#
+# AWS: the backend calls Bedrock/DynamoDB/S3 for real answers. It reads
+# credentials from your mounted ~/.aws (SSO profile) — set AWS_SSO_PROFILE and
+# AWS_REGION in a .env file (see .env.example). Without valid credentials the
+# app still runs and degrades to its built-in fallback responses.
+#
+# NOTE on SSO: the ~/.aws mount is READ-WRITE on purpose. AWS SSO tokens are
+# short-lived; botocore refreshes them mid-run and must WRITE the new token
+# back to ~/.aws/sso/cache. A read-only mount makes the refresh fail with
+# "[Errno 30] Read-only file system", which then degrades live AWS calls (e.g.
+# the CRM DynamoDB write) to fallback mode. Keep it writable, and run
+# `aws sso login --profile <name>` on the host before starting the stack.
+#
+# Session store runs in DEPLOYMENT_MODE=local (in-memory), so no AgentCore
+# Memory resource is needed to run the stack locally.
+
+services:
+  backend:
+    build:
+      context: ./backend
+    image: ask-gulf-backend:local
+    container_name: ask-gulf-backend
+    environment:
+      # Local, in-memory session store; no AgentCore Memory dependency.
+      DEPLOYMENT_MODE: local
+      HOST: 0.0.0.0
+      PORT: "8080"
+      AWS_REGION: ${AWS_REGION:-ap-south-1}
+      # An SSO profile name present in your mounted ~/.aws/config. boto3 reads
+      # ~/.aws/config (default location) and resolves the SSO token from the
+      # ~/.aws/sso/cache below — no AWS_CONFIG_FILE / AWS_SHARED_CREDENTIALS_FILE
+      # overrides (the latter points at a static credentials file that does not
+      # exist for an SSO-only profile and disrupts SSO resolution).
+      AWS_SSO_PROFILE: ${AWS_SSO_PROFILE:-}
+    ports:
+      - "8080:8080"
+    volumes:
+      # READ-WRITE mount so botocore can refresh + re-cache the SSO token.
+      - ${HOME:-${USERPROFILE}}/.aws:/root/.aws:rw
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8080/health', timeout=4).status==200 else 1)"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        # Browser-visible backend WebSocket base. The browser connects to the
+        # HOST-published backend port, so this is localhost:8080 by default.
+        NEXT_PUBLIC_WS_BASE_URL: ${NEXT_PUBLIC_WS_BASE_URL:-ws://localhost:8080}
+    image: ask-gulf-frontend:local
+    container_name: ask-gulf-frontend
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
